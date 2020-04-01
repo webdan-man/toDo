@@ -1,0 +1,1 @@
+export const CARDS_API = 'http://localhost:3000/cards/';
