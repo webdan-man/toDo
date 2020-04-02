@@ -1,12 +1,14 @@
 <template>
   <div class="home">
-    <router-link tag="div" class="card" v-for="card in cardList" :key="card.id" :to="`/${card.id}`">
-      <CardHeader
-              :card="card"
-              @actionDel="actionDel"
-      />
-      <CardToDoList :card="card"/>
-    </router-link>
+    <template v-if="cardList.length">
+      <router-link tag="div" class="card" v-for="card in cardList" :key="card.id" :to="`/${card.id}`">
+        <CardHeader
+                :card="card"
+                @actionDel="actionDel"
+        />
+        <CardToDoList :card="card"/>
+      </router-link>
+    </template>
     <div class="card add">
       <span v-if="isStartCreate" @click="isStartCreate = false"><i class="far fa-plus-square"></i></span>
       <NewCard

@@ -1,6 +1,7 @@
 <template>
     <div class="about">
         <div class="card">
+            <div class="save-block" v-if="isSave"><p>Save...</p></div>
             <CardHeader
                 :card="card"
                 @actionDel="actionDel"
@@ -62,7 +63,8 @@
                 removeTaskId: '',
                 isTask: false,
                 isCancel: false,
-                localName: ''
+                localName: '',
+                isSave: false
             }
         },
         computed: {
@@ -128,10 +130,12 @@
                 this.popupVisible = true;
             },
             async saveCard() {
+                this.isSave = true;
                 await this.putCardItem({
                     save: true,
                     card: this.card
                 });
+                setTimeout(() => this.isSave = false, 500)
             },
             async removeCard() {
                 await this.deleteCard(this.removeId);
@@ -158,7 +162,24 @@
     .about {
         display: flex;
     }
+    .save-block {
+        position: absolute;
+        background: rgba(144, 238, 144, 0.51);
+        z-index: 2;
+        top: 15px;
+        left: 15px;
+        right: 15px;
+        bottom: 75px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        p {
+            font-size: 24px;
+            color: white;
+        }
+    }
     .card {
+        position: relative;
         width: 100%;
         min-width: 290px;
         margin: 15px;
