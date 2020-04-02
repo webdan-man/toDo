@@ -5,7 +5,9 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "test": "http-server dist -p 8080 -c 1 --push-state",
+    "json": "json-server bd.js"
   },
   "dependencies": {
     "axios": "^0.19.2",

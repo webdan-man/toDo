@@ -15,13 +15,13 @@ export const onResponseError = async error => {
     if (error.response) {
         message = error.response.data.message;
         if (error.response.status === 401) {
-            console.error('401 => ' + message)
+            // console.error('401 => ' + message)
         }
         if (error.response.status === 400 || error.response.status === 403) {
-            console.error('400 || 403 => ' + message)
+            // console.error('400 || 403 => ' + message)
         }
         if (error.response.status === 404) {
-            console.error('404 => ' + message)
+            // console.error('404 => ' + message)
         }
     }
     throw Error(message)
